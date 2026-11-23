@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Garden City Custom Cakes</title>
+  <meta name="description" content="Browse custom cakes, cupcakes, cake pops, and seasonal treats made locally in Welland and the Niagara Region." />
+
+  <!-- Google Fonts: Cormorant Garamond & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            berry: '#5C1824',
+            'berry-dark': '#3E0E17',
+            'slate-frost': '#5A6E7D',
+            'slate-light': '#7A8E9C',
+            pearl: '#FAF6F0',
+            porcelain: '#F3ECE2',
+            'antique-gold': '#B8935A',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          boxShadow: {
+            'editorial': '0 10px 30px -10px rgba(92, 24, 36, 0.08)',
+            'card': '0 4px 20px -2px rgba(92, 24, 36, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-pearl: #FAF6F0;
+      --bg-porcelain: #F3ECE2;
+      --ink-berry: #5C1824;
+      --ink-berry-dark: #3E0E17;
+      --accent-slate: #5A6E7D;
+      --accent-slate-light: #7A8E9C;
+      --accent-gold: #B8935A;
+    }
+
+    body {
+      background-color: var(--bg-pearl);
+      color: var(--ink-berry);
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      overflow-x: clip;
+    }
+
+    h1, h2, h3, h4, .font-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .gallery-img-wrap img {
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gallery-card:hover .gallery-img-wrap img {
+      transform: scale(1.04);
+    }
+  </style>
+</head>
+<body class="bg-pearl text-berry antialiased selection:bg-slate-frost/20 selection:text-berry-dark pb-20 lg:pb-0">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 w-full bg-pearl/90 backdrop-blur-md border-b border-berry/10 py-3.5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+      <a href="index.html#home" class="flex items-center gap-3 group">
+        <div class="h-11 w-11 sm:h-12 sm:w-12 rounded-full overflow-hidden border border-antique-gold/60 bg-white shrink-0 flex items-center justify-center shadow-sm">
+          <img
+            src="Garden City Custom Cakes logo.png"
+            alt="Garden City Custom Cakes logo"
+            class="h-full w-full object-cover"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <span class="hidden items-center justify-center font-editorial font-bold text-lg text-berry">GC</span>
+        </div>
+        <div class="leading-tight">
+          <span class="block font-editorial text-lg sm:text-xl font-semibold tracking-tight text-berry group-hover:text-berry-dark transition-colors">
+            Garden City Custom Cakes
+          </span>
+          <span class="block text-[11px] uppercase tracking-[0.14em] text-slate-frost font-medium">
+            Custom Cakes • Cupcakes • Cake Pops
+          </span>
+        </div>
+      </a>
+
+      <nav aria-label="Gallery Navigation" class="hidden md:flex items-center gap-6 text-xs font-medium uppercase tracking-[0.12em] text-berry/85">
+        <a href="index.html#home" class="hover:text-berry-dark transition-colors py-1">Home</a>
+        <a href="index.html#custom-cakes" class="hover:text-berry-dark transition-colors py-1">Custom Cakes</a>
+        <a href="index.html#cupcakes" class="hover:text-berry-dark transition-colors py-1">Cupcakes</a>
+        <a href="index.html#cake-pops" class="hover:text-berry-dark transition-colors py-1">Cake Pops</a>
+        <a href="index.html#seasonal" class="hover:text-berry-dark transition-colors py-1">Seasonal</a>
+        <a href="gallery.html" aria-current="page" class="text-berry-dark font-bold underline underline-offset-4 py-1">Gallery</a>
+        <a href="index.html#contact" class="hover:text-berry-dark transition-colors py-1">Contact</a>
+      </nav>
+
+      <a href="index.html#order" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-berry text-pearl text-xs font-semibold uppercase tracking-[0.12em] hover:bg-berry-dark transition-colors shadow-sm">
+        Get a Free Quote
+      </a>
+    </div>
+  </header>
+
+  <!-- Gallery Content -->
+  <main class="py-10 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.16em] text-slate-frost font-semibold">Portfolio</p>
+          <h1 class="font-editorial text-4xl sm:text-5xl font-semibold text-berry mt-1">GALLERY</h1>
+          <p class="text-sm text-berry/80 mt-2">
+            Browse creations across cakes, cupcakes, cake pops, and seasonal treats.
+          </p>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Gallery Categories">
+          <button type="button" data-filter="ALL" onclick="filterGallery('ALL')" class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-berry text-pearl">ALL</button>
+          <button type="button" data-filter="CAKES" onclick="filterGallery('CAKES')" class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-berry hover:bg-berry/10">CAKES</button>
+          <button type="button" data-filter="CUPCAKES" onclick="filterGallery('CUPCAKES')" class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-berry hover:bg-berry/10">CUPCAKES</button>
+          <button type="button" data-filter="CAKE POPS" onclick="filterGallery('CAKE POPS')" class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-berry hover:bg-berry/10">CAKE POPS</button>
+          <button type="button" data-filter="SEASONAL" onclick="filterGallery('SEASONAL')" class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-berry hover:bg-berry/10">SEASONAL</button>
+        </div>
+      </div>
+
+      <!-- Editorial Masonry-Style Grid -->
+      <div id="gallery-grid" class="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5"></div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="gallery-lightbox" class="hidden fixed inset-0 z-50 bg-berry-dark/85 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" onclick="if(event.target === this) closeLightbox()">
+    <div class="bg-pearl rounded-2xl max-w-2xl w-full overflow-hidden border border-antique-gold/50 shadow-2xl">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-berry/10">
+        <span id="lightbox-caption" class="font-editorial text-xl font-semibold text-berry"></span>
+        <button type="button" onclick="closeLightbox()" aria-label="Close preview" class="p-1.5 rounded-lg text-berry hover:bg-porcelain">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="bg-porcelain p-4 flex items-center justify-center max-h-[75vh]">
+        <img id="lightbox-img" src="" alt="" class="max-h-[68vh] w-auto object-contain rounded-lg" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-porcelain border-t border-berry/15 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-berry/80">
+      <p>© 2026 Garden City Custom Cakes. All rights reserved.</p>
+      <a href="index.html#home" class="underline font-semibold text-berry">Back to Main Site</a>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile Bottom CTA -->
+  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-pearl/95 backdrop-blur-md border-t border-berry/15 px-4 py-2.5">
+    <a
+      href="index.html#order"
+      class="block w-full text-center py-3 px-5 rounded-full bg-berry text-pearl text-xs font-bold uppercase tracking-[0.14em] hover:bg-berry-dark shadow-sm"
+    >
+      Get a Free Quote
+    </a>
+  </div>
+
+  <script>
+    const GALLERY_ITEMS = [
+      { file: "redvelvetcherrybuttercreamcakes2.jpg", title: "Red Velvet Cherry Buttercream Cake", category: "CAKES" },
+      { file: "purpleglittercupcakes.jpg", title: "Purple Glitter Cupcakes", category: "CUPCAKES" },
+      { file: "cherrycakewithpinkfrostingberries.jpg", title: "Cherry Cake with Pink Frosting & Berries", category: "CAKES" },
+      { file: "blueberryandcherrybirthdaycake.jpg", title: "Blueberry & Cherry Birthday Cake", category: "CAKES" },
+      { file: "blueberryvanillacake.jpg", title: "Blueberry Vanilla Cake", category: "CAKES" },
+      { file: "blueberrycherrycakepiece.jpg", title: "Blueberry Cherry Cake Slice", category: "CAKES" },
+      { file: "2tiersquarecake.jpg", title: "2-Tier Square Cake", category: "CAKES" },
+      { file: "blueberrycupcakes.jpg", title: "Blueberry Cupcakes", category: "CUPCAKES" },
+      { file: "kidsbirthdaycake1.jpg", title: "Kids Birthday Cake", category: "CAKES" },
+      { file: "kidsbirthdaycake2.jpg", title: "Celebration Birthday Cake", category: "CAKES" },
+      { file: "star cake.jpg", title: "Star-Shaped Cake", category: "CAKES" },
+      { file: "circular birthday cake.jpg", title: "Circular Birthday Cake", category: "CAKES" },
+      { file: "tiered birthday cake 3.jpg", title: "Tiered Birthday Cake", category: "CAKES" },
+      { file: "cake pop themed .jpg", title: "Themed Cake Pops", category: "CAKE POPS" },
+      { file: "cakes pops 2.jpg", title: "Assorted Cake Pops", category: "CAKE POPS" },
+      { file: "cake pops 3.jpg", title: "Custom Cake Pops", category: "CAKE POPS" },
+      { file: "Bedazzledbirthdaycake.png", title: "Bedazzled Birthday Cake", category: "CAKES" },
+      { file: "bedazzled birthdaycake 2.jpg", title: "Bedazzled Cake Design", category: "CAKES" },
+      { file: "glitterbirthdaycake4.jpg", title: "Glitter Birthday Cake", category: "CAKES" },
+      { file: "3 tiered birthday cake pink.jpg", title: "3-Tier Pink Birthday Cake", category: "CAKES" },
+      { file: "2 tiered lemon birthday cake.jpg", title: "2-Tier Lemon Birthday Cake", category: "CAKES" },
+      { file: "2 tiered pink birthday cake.jpg", title: "2-Tier Pink Birthday Cake", category: "CAKES" },
+      { file: "2 tiered wedding cake.jpg", title: "2-Tier Wedding Cake", category: "CAKES" },
+      { file: "4 tiered birthday cake.jpg", title: "4-Tier Birthday Cake", category: "CAKES" },
+      { file: "2 tiered birthday cake hot pink.jpg", title: "2-Tier Celebration Cake", category: "CAKES" },
+      { file: "grey 2 tiered birthday cake.jpg", title: "2-Tier Slate & Grey Cake", category: "CAKES" },
+      { file: "3 tiered blue birthday cake.jpg", title: "3-Tier Blue Birthday Cake", category: "CAKES" },
+      { file: "1 tiered soccer cake.jpg", title: "1-Tier Sports Cake", category: "CAKES" },
+      { file: "2 tiered large birthdaycake.jpg", title: "2-Tier Celebration Cake", category: "CAKES" },
+      { file: "red birthday cake.jpg", title: "Berry Red Birthday Cake", category: "CAKES" },
+      { file: "ruffleddetailcircle cake.jpg", title: "Ruffled Detail Circle Cake", category: "CAKES" },
+      { file: "ruffled purple birthday cake.jpg", title: "Ruffled Celebration Cake", category: "CAKES" },
+      { file: "purpledetailed cake.jpg", title: "Detailed Celebration Cake", category: "CAKES" },
+      { file: "cakeandflowersbirthdaycake.jpg", title: "Cake & Floral Birthday Cake", category: "CAKES" },
+      { file: "mermaidcake.jpg", title: "Themed Mermaid Cake", category: "CAKES" },
+      { file: "detailed circle cake.jpg", title: "Detailed Circle Cake", category: "CAKES" },
+      { file: "flowercake.jpg", title: "Floral Piped Cake", category: "CAKES" },
+      { file: "pinkgradientflowercake.jpg", title: "Gradient Floral Cake", category: "CAKES" },
+      { file: "barbie birthday cake.jpg", title: "Themed Doll Birthday Cake", category: "CAKES" },
+      { file: "xmascake1.jpg", title: "Christmas Holiday Cake", category: "SEASONAL" },
+      { file: "xmascake2.jpg", title: "Festive Holiday Cake", category: "SEASONAL" },
+      { file: "xmas cakes 3.jpg", title: "Holiday Cake Collection", category: "SEASONAL" },
+      { file: "xmas cake 4.jpg", title: "8 Inch Christmas Cake", category: "SEASONAL" },
+      { file: "xmas cake 5.jpg", title: "Winter Holiday Cake", category: "SEASONAL" },
+      { file: "xmas cake 6.jpg", title: "10 Inch Christmas Cake", category: "SEASONAL" },
+      { file: "xmas cupcakes.jpg", title: "12 Christmas Cupcakes", category: "SEASONAL" },
+      { file: "xmas cupcakes2.jpg", title: "Holiday Cupcakes", category: "SEASONAL" },
+      { file: "xmas cupcakes 2.jpg", title: "Festive Cupcakes", category: "SEASONAL" },
+      { file: "xmas cupcakes 5.png", title: "Christmas Cupcake Box", category: "SEASONAL" },
+      { file: "xmas cupcakes 7.jpg", title: "Seasonal Cupcakes", category: "SEASONAL" },
+      { file: "xmas cake pops.jpg", title: "Christmas Cake Pops", category: "SEASONAL" },
+      { file: "xmas cake pops 3.jpg", title: "16 Christmas Cake Pops", category: "SEASONAL" },
+      { file: "xmas cake pops 5.jpg", title: "Festive Cake Pops", category: "SEASONAL" },
+      { file: "red velvet cake pops.jpg", title: "Red Velvet Cake Pops", category: "CAKE POPS" },
+      { file: "red velvet cake pops 6.jpg", title: "Red Velvet Dipped Cake Pops", category: "CAKE POPS" },
+      { file: "lemon cake balls are bite-sized treats.jpg", title: "Lemon Cake Treats", category: "CAKE POPS" },
+      { file: "birthday cake pops 6.jpg", title: "Birthday Cake Pops", category: "CAKE POPS" },
+      { file: "pink and red cake pops.jpg", title: "Berry & Rose Cake Pops", category: "CAKE POPS" },
+      { file: "2 dozen cupcakes.jpg", title: "2 Dozen Custom Cupcakes", category: "CUPCAKES" },
+      { file: "two dozen blue cupcakes.jpg", title: "Two Dozen Blue Cupcakes", category: "CUPCAKES" },
+      { file: "2 dozen gradient cupcakes.jpg", title: "2 Dozen Gradient Cupcakes", category: "CUPCAKES" },
+      { file: "graduation cupcakes.jpg", title: "Graduation Cupcakes", category: "CUPCAKES" },
+      { file: "graduation cupcakes 3.jpg", title: "Graduation Celebration Cupcakes", category: "CUPCAKES" },
+      { file: "wrapped .jpg", title: "Individually Wrapped Treats", category: "CAKE POPS" },
+      { file: "cake pops wrappewd.jpg", title: "Wrapped Cake Pops", category: "CAKE POPS" },
+      { file: "individual wrapped cake pops.jpg", title: "Individually Wrapped Cake Pops", category: "CAKE POPS" },
+      { file: "cakepopsbabyshower.jpg", title: "Baby Shower Cake Pops", category: "CAKE POPS" },
+      { file: "cake pop package.jpg", title: "Cake Pop Boxed Set", category: "CAKE POPS" },
+      { file: "cakesizes.jpg", title: "Cake Size Reference", category: "CAKES" },
+      { file: "cake cutting guide.jpg", title: "Cake Cutting Guide", category: "CAKES" },
+      { file: "ganache options.jpg", title: "Ganache Options Reference", category: "CAKES" },
+      { file: "cake pops.jpg", title: "Cake Pops Selection", category: "CAKE POPS" },
+      { file: "8 inch standard cae.jpg", title: "8 Inch Standard Cake", category: "CAKES" },
+      { file: "10 inch cake.jpg", title: "10 Inch Round Cake", category: "CAKES" },
+      { file: "2 tier round cake.jpg", title: "2 Tier Round Cake", category: "CAKES" },
+      { file: "12 rainbow cupcakes.png", title: "12 Colourful Cupcakes", category: "CUPCAKES" }
+    ];
+
+    function renderGallery(category = 'ALL') {
+      const grid = document.getElementById('gallery-grid');
+      const items = category === 'ALL'
+        ? GALLERY_ITEMS
+        : GALLERY_ITEMS.filter(item => item.category === category);
+
+      grid.innerHTML = items.map(item => {
+        const safeFile = encodeURI(item.file).replace(/'/g, "%27");
+        const safeTitle = item.title.replace(/'/g, "\\'");
+        return `
+          <figure class="gallery-card break-inside-avoid bg-white rounded-2xl overflow-hidden border border-berry/10 shadow-card cursor-pointer" onclick="openLightbox('${safeFile}', '${safeTitle}')">
+            <div class="gallery-img-wrap bg-porcelain overflow-hidden">
+              <img
+                src="${safeFile}"
+                alt="${item.title}"
+                loading="lazy"
+                class="w-full h-auto object-cover block"
+                onerror="this.src='Garden City Custom Cakes logo.png'; this.classList.add('p-6', 'object-contain');"
+              />
+            </div>
+            <figcaption class="px-4 py-3 flex items-center justify-between gap-2 border-t border-berry/5">
+              <span class="text-xs font-medium text-berry truncate">${item.title}</span>
+              <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-frost shrink-0">${item.category}</span>
+            </figcaption>
+          </figure>
+        `;
+      }).join('');
+    }
+
+    function filterGallery(category) {
+      document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+        const active = btn.getAttribute('data-filter') === category;
+        btn.classList.toggle('bg-berry', active);
+        btn.classList.toggle('text-pearl', active);
+        btn.classList.toggle('bg-porcelain', !active);
+        btn.classList.toggle('text-berry', !active);
+      });
+      renderGallery(category);
+    }
+
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('gallery-lightbox').classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('gallery-lightbox').classList.add('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderGallery('ALL');
+    });
+  </script>
+</body>
+</html>
