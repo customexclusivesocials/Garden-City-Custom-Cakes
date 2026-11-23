@@ -972,9 +972,9 @@
           </div>
 
           <div id="builder-submitted-banner" class="hidden p-5 rounded-2xl bg-porcelain border border-antique-gold text-berry space-y-2">
-            <p class="font-editorial text-2xl font-semibold">Quote Request Prepared</p>
+            <p class="font-editorial text-2xl font-semibold">Quote Request Sent</p>
             <p class="text-xs leading-relaxed">
-              Your quote details have been formatted and opened in your email client addressed to <strong>customexclusivesocials@gmail.com</strong>. Remember: submitting a quote request does not automatically confirm your order until design, pricing, and the 50% deposit are confirmed.
+              Your quote request has been submitted. Remember: submitting a quote request does not automatically confirm your order until design, pricing, and the 50% deposit are confirmed.
             </p>
           </div>
         </form>
@@ -1131,9 +1131,7 @@
             Request Cupcake Quote
           </button>
 
-          <div id="cupcake-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry">
-            Your cupcake quote request has been prepared for <strong>customexclusivesocials@gmail.com</strong>.
-          </div>
+          <div id="cupcake-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry"></div>
         </form>
 
         <!-- Cupcake Occasions Section -->
@@ -1291,9 +1289,7 @@
           Request Cake Pop Quote
         </button>
 
-        <div id="cakepop-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry">
-          Your cake pop quote request has been prepared for <strong>customexclusivesocials@gmail.com</strong>.
-        </div>
+        <div id="cakepop-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry"></div>
       </form>
     </div>
   </section>
@@ -1437,9 +1433,7 @@
           Order Christmas
         </button>
 
-        <div id="christmas-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry">
-          Your Christmas order request has been prepared for <strong>customexclusivesocials@gmail.com</strong>.
-        </div>
+        <div id="christmas-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry"></div>
       </form>
 
     </div>
@@ -1626,9 +1620,7 @@
             Request My Free Quote
           </button>
 
-          <div id="fq-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry">
-            Your free custom quote request has been prepared for <strong>customexclusivesocials@gmail.com</strong>.
-          </div>
+          <div id="fq-submitted" class="hidden p-4 rounded-xl bg-porcelain border border-antique-gold text-xs text-berry"></div>
         </form>
       </div>
 
@@ -1769,9 +1761,8 @@
   <!-- ===================================================================== -->
   <!-- APPLICATION JAVASCRIPT                                                -->
   <!-- ===================================================================== -->
+  <script src="https://forminit.com/sdk/v1/forminit.js"></script>
   <script>
-    const STUDIO_INQUIRY_EMAIL = "customexclusivesocials@gmail.com";
-
     const SITE_CONFIG = {
       businessName: "Garden City Custom Cakes",
       domain: "GardencityCupandCakes.ca",
@@ -2227,67 +2218,6 @@
       }
     }
 
-    function openMailtoInquiry(subject, bodyLines) {
-      const mailtoLink = `mailto:${encodeURIComponent(STUDIO_INQUIRY_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-      window.location.href = mailtoLink;
-    }
-
-    function handleBuilderSubmit(e) {
-      e.preventDefault();
-      const errBox = document.getElementById('builder-error-msg');
-      const name = document.getElementById('builder-name').value.trim();
-      const email = document.getElementById('builder-email').value.trim();
-      const phone = document.getElementById('builder-phone').value.trim();
-      const dateVal = document.getElementById('builder-date').value;
-
-      if (!name || !email || !phone || !dateVal) {
-        errBox.textContent = 'Please complete your Name, Email, Phone, and Date in Step 7 before requesting a quote.';
-        errBox.classList.remove('hidden');
-        goToBuilderStep(7);
-        return;
-      }
-
-      if (!validateOrderDate('builder')) {
-        errBox.textContent = 'Please review the date notice (4-day minimum notice, up to 3 months ahead, or select Rush Order for under 3 days).';
-        errBox.classList.remove('hidden');
-        goToBuilderStep(7);
-        return;
-      }
-
-      errBox.classList.add('hidden');
-      const state = getBuilderState();
-      const occasion = document.getElementById('builder-occasion').value || 'Not specified';
-      const palette = document.getElementById('builder-palette').value || 'Not specified';
-      const desc = document.getElementById('builder-description').value || 'None';
-      const address = document.getElementById('builder-delivery-address')?.value || '';
-      const refFile = document.getElementById('builder-ref-file')?.files?.[0]?.name || 'None attached';
-
-      openMailtoInquiry(
-        `Custom Cake Quote Request — ${state.product} (${dateVal})`,
-        [
-          `Customer Name: ${name}`,
-          `Email: ${email}`,
-          `Phone: ${phone}`,
-          `Event Date: ${dateVal}`,
-          `Fulfillment: ${state.fulfillment}${address ? ` (${address})` : ''}`,
-          `Product: ${state.product}`,
-          `Flavour: ${state.flavour}`,
-          `Filling: ${state.filling}`,
-          `Icing: ${state.icing}`,
-          `Ganache: ${state.ganache}`,
-          `Finish: ${state.finish}`,
-          `Add-ons: ${state.addons}`,
-          `Occasion: ${occasion}`,
-          `Colour Palette: ${palette}`,
-          `Design Description: ${desc}`,
-          `Reference Image Filename: ${refFile}`,
-          `Estimated Starting Subtotal: $${state.subtotal}`
-        ]
-      );
-
-      document.getElementById('builder-submitted-banner').classList.remove('hidden');
-    }
-
     function prefillUnder30Cake() {
       navigateTo('custom-cakes');
       const classicRadio = document.querySelector('input[name="base-product"][value="classic-8"]');
@@ -2303,280 +2233,274 @@
       document.getElementById('christmas-order-form').scrollIntoView({ behavior: 'smooth' });
     }
 
-  
-const forminit = new Forminit();
-const GARDEN_CITY_FORM_ID = '4fsrhyl97yk';
+    const forminit = new Forminit();
+    const GARDEN_CITY_FORM_ID = '4fsrhyl97yk';
+    const forminitSending = new WeakSet();
 
-// Prevent duplicate submissions and retain the existing form design.
-const forminitSending = new WeakSet();
+    function forminitFieldName(element) {
+      return (element.name || element.id || 'field')
+        .replace(/[^a-zA-Z0-9_-]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '')
+        .toLowerCase();
+    }
 
-function forminitFieldName(element) {
-  return (element.name || element.id || 'field')
-    .replace(/[^a-zA-Z0-9_-]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .toLowerCase();
-}
+    function normalizeCanadianPhone(value) {
+      const raw = value.trim();
+      const digits = raw.replace(/\D/g, '');
 
-function normalizeCanadianPhone(value) {
-  const raw = value.trim();
-  const digits = raw.replace(/\D/g, '');
-
-  if (raw.startsWith('+') && digits.length >= 8 && digits.length <= 15) {
-    return `+${digits}`;
-  }
-
-  if (digits.length === 10) return `+1${digits}`;
-  if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`;
-
-  return null;
-}
-
-function buildGardenCityFormData(form, inquiryType) {
-  const fd = new FormData();
-
-  fd.append('fi-text-inquiry_type', inquiryType);
-
-  let senderEmailAdded = false;
-  let senderNameAdded = false;
-  let senderPhoneAdded = false;
-
-  for (const el of form.querySelectorAll('input, select, textarea')) {
-    if (el.disabled || ['submit', 'button', 'reset'].includes(el.type)) continue;
-
-    const key = forminitFieldName(el);
-
-    if (el.type === 'file') {
-      if (el.files && el.files[0]) {
-        fd.append(`fi-file-${key}`, el.files[0]);
+      if (raw.startsWith('+') && digits.length >= 8 && digits.length <= 15) {
+        return `+${digits}`;
       }
-      continue;
+
+      if (digits.length === 10) return `+1${digits}`;
+      if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`;
+
+      return null;
     }
 
-    if (el.type === 'checkbox') {
-      if (el.checked) {
-        fd.append(`fi-checkbox-${key}[]`, el.value || 'Yes');
+    function buildGardenCityFormData(form, inquiryType) {
+      const fd = new FormData();
+
+      fd.append('fi-text-inquiry_type', inquiryType);
+
+      let senderEmailAdded = false;
+      let senderNameAdded = false;
+      let senderPhoneAdded = false;
+
+      for (const el of form.querySelectorAll('input, select, textarea')) {
+        if (el.disabled || ['submit', 'button', 'reset'].includes(el.type)) continue;
+
+        const key = forminitFieldName(el);
+
+        if (el.type === 'file') {
+          if (el.files && el.files[0]) {
+            fd.append(`fi-file-${key}`, el.files[0]);
+          }
+          continue;
+        }
+
+        if (el.type === 'checkbox') {
+          if (el.checked) {
+            fd.append(`fi-checkbox-${key}[]`, el.value || 'Yes');
+          }
+          continue;
+        }
+
+        if (el.type === 'radio') {
+          if (el.checked) {
+            fd.append(`fi-radio-${key}`, el.value);
+          }
+          continue;
+        }
+
+        if (!el.value) continue;
+
+        if (el.type === 'email' && !senderEmailAdded) {
+          fd.append('fi-sender-email', el.value.trim());
+          senderEmailAdded = true;
+          continue;
+        }
+
+        if (
+          el.type === 'text' &&
+          /(^|-)name$/.test(key) &&
+          !senderNameAdded
+        ) {
+          fd.append(
+            'fi-sender-fullName',
+            el.value.trim().replace(/[\u2018\u2019]/g, "'")
+          );
+          senderNameAdded = true;
+          continue;
+        }
+
+        if (el.type === 'tel' && !senderPhoneAdded) {
+          const phone = normalizeCanadianPhone(el.value);
+
+          if (!phone) {
+            throw new Error('PHONE_INVALID');
+          }
+
+          fd.append('fi-sender-phone', phone);
+          fd.append('fi-sender-country', 'CA');
+          senderPhoneAdded = true;
+          continue;
+        }
+
+        if (el.type === 'date') {
+          fd.append(`fi-date-${key}`, el.value);
+          continue;
+        }
+
+        if (el.type === 'number') {
+          fd.append(`fi-number-${key}`, el.value);
+          continue;
+        }
+
+        if (el.tagName === 'SELECT') {
+          fd.append(`fi-select-${key}`, el.value);
+          continue;
+        }
+
+        if (el.tagName === 'TEXTAREA') {
+          fd.append(`fi-text-${key}`, el.value);
+          continue;
+        }
+
+        fd.append(`fi-text-${key}`, el.value);
       }
-      continue;
-    }
 
-    if (el.type === 'radio') {
-      if (el.checked) {
-        fd.append(`fi-radio-${key}`, el.value);
+      if (form.id === 'cake-builder-form') {
+        const state = getBuilderState();
+
+        fd.append('fi-text-estimated_subtotal', `$${state.subtotal}`);
+        fd.append('fi-text-builder_product_summary', [
+          `Product: ${state.product}`,
+          `Size: ${state.size}`,
+          `Quantity: ${state.quantity}`,
+          `Flavour: ${state.flavour}`,
+          `Filling: ${state.filling}`,
+          `Icing: ${state.icing}`,
+          `Ganache: ${state.ganache}`,
+          `Finish: ${state.finish}`,
+          `Add-ons: ${state.addons}`,
+          `Event date: ${state.date}`,
+          `Fulfillment: ${state.fulfillment}`
+        ].join('\n'));
       }
-      continue;
+
+      return fd;
     }
 
-    if (!el.value) continue;
+    async function submitGardenCityForm(form, inquiryType, bannerId) {
+      if (forminitSending.has(form)) return;
 
-    if (el.type === 'email' && !senderEmailAdded) {
-      fd.append('fi-sender-email', el.value.trim());
-      senderEmailAdded = true;
-      continue;
+      const button = form.querySelector('button[type="submit"]');
+      const banner = document.getElementById(bannerId);
+      const builderError = document.getElementById('builder-error-msg');
+
+      try {
+        const fd = buildGardenCityFormData(form, inquiryType);
+
+        let totalFileSize = 0;
+
+        for (const value of fd.values()) {
+          if (value instanceof File) totalFileSize += value.size;
+        }
+
+        if (totalFileSize > 24 * 1024 * 1024) {
+          throw new Error('FILE_TOO_LARGE');
+        }
+
+        forminitSending.add(form);
+        if (button) button.disabled = true;
+
+        if (banner) {
+          banner.textContent = 'Sending your request...';
+          banner.classList.remove('hidden');
+        }
+
+        if (builderError) builderError.classList.add('hidden');
+
+        const { data, error } = await forminit.submit(
+          GARDEN_CITY_FORM_ID,
+          fd
+        );
+
+        if (error || typeof data?.hashId !== 'string') {
+          console.error('Forminit submission error:', error);
+          throw new Error('SUBMISSION_FAILED');
+        }
+
+        if (banner) {
+          banner.textContent =
+            'Thank you! Your request has been submitted successfully. Garden City Custom Cakes will review your details and be in touch.';
+          banner.classList.remove('hidden');
+        }
+
+        return true;
+
+      } catch (error) {
+        console.error('Garden City form error:', error);
+
+        let message = 'Something went wrong while submitting your request. Please try again. Your information has been kept.';
+
+        if (error.message === 'PHONE_INVALID') {
+          message = 'Please enter a valid Canadian phone number with 10 digits.';
+        } else if (error.message === 'FILE_TOO_LARGE') {
+          message = 'Your reference image is too large. Please use a smaller image and try again.';
+        }
+
+        if (form.id === 'cake-builder-form' && builderError) {
+          builderError.textContent = message;
+          builderError.classList.remove('hidden');
+        } else if (banner) {
+          banner.textContent = message;
+          banner.classList.remove('hidden');
+        }
+
+        return false;
+
+      } finally {
+        forminitSending.delete(form);
+        if (button) button.disabled = false;
+      }
     }
 
-    if (
-      el.type === 'text' &&
-      /(^|-)name$/.test(key) &&
-      !senderNameAdded
-    ) {
-      fd.append(
-        'fi-sender-fullName',
-        el.value.trim().replace(/[\u2018\u2019]/g, "'")
+    async function handleBuilderSubmit(e) {
+      e.preventDefault();
+
+      const errBox = document.getElementById('builder-error-msg');
+      const name = document.getElementById('builder-name').value.trim();
+      const email = document.getElementById('builder-email').value.trim();
+      const phone = document.getElementById('builder-phone').value.trim();
+      const dateVal = document.getElementById('builder-date').value;
+
+      if (!name || !email || !phone || !dateVal) {
+        errBox.textContent =
+          'Please complete your Name, Email, Phone, and Date in Step 7 before requesting a quote.';
+        errBox.classList.remove('hidden');
+        goToBuilderStep(7);
+        return;
+      }
+
+      if (!validateOrderDate('builder')) {
+        errBox.textContent =
+          'Please review the date notice (4-day minimum notice, up to 3 months ahead, or select Rush Order for under 3 days).';
+        errBox.classList.remove('hidden');
+        goToBuilderStep(7);
+        return;
+      }
+
+      errBox.classList.add('hidden');
+
+      await submitGardenCityForm(
+        e.target,
+        'Custom Cake Builder Quote Request',
+        'builder-submitted-banner'
       );
-      senderNameAdded = true;
-      continue;
     }
 
-    if (el.type === 'tel' && !senderPhoneAdded) {
-      const phone = normalizeCanadianPhone(el.value);
+    async function handleSimpleFormSubmit(e, title, bannerId) {
+      e.preventDefault();
 
-      if (!phone) {
-        throw new Error('PHONE_INVALID');
-      }
-
-      fd.append('fi-sender-phone', phone);
-      fd.append('fi-sender-country', 'CA');
-      senderPhoneAdded = true;
-      continue;
+      await submitGardenCityForm(
+        e.target,
+        title,
+        bannerId
+      );
     }
 
-    if (el.type === 'date') {
-      fd.append(`fi-date-${key}`, el.value);
-      continue;
+    async function handleFreeQuoteSubmit(e) {
+      e.preventDefault();
+
+      await submitGardenCityForm(
+        e.target,
+        'Free Custom Quote and Digital Mockup Request',
+        'fq-submitted'
+      );
     }
-
-    if (el.type === 'number') {
-      fd.append(`fi-number-${key}`, el.value);
-      continue;
-    }
-
-    if (el.tagName === 'SELECT') {
-      fd.append(`fi-select-${key}`, el.value);
-      continue;
-    }
-
-    if (el.tagName === 'TEXTAREA') {
-      fd.append(`fi-text-${key}`, el.value);
-      continue;
-    }
-
-    fd.append(`fi-text-${key}`, el.value);
-  }
-
-  // Include the live cake-builder quote calculation.
-  if (form.id === 'cake-builder-form') {
-    const state = getBuilderState();
-
-    fd.append('fi-text-estimated_subtotal', `$${state.subtotal}`);
-    fd.append('fi-text-builder_product_summary', [
-      `Product: ${state.product}`,
-      `Size: ${state.size}`,
-      `Quantity: ${state.quantity}`,
-      `Flavour: ${state.flavour}`,
-      `Filling: ${state.filling}`,
-      `Icing: ${state.icing}`,
-      `Ganache: ${state.ganache}`,
-      `Finish: ${state.finish}`,
-      `Add-ons: ${state.addons}`,
-      `Event date: ${state.date}`,
-      `Fulfillment: ${state.fulfillment}`
-    ].join('\n'));
-  }
-
-  return fd;
-}
-
-async function submitGardenCityForm(form, inquiryType, bannerId) {
-  if (forminitSending.has(form)) return;
-
-  const button = form.querySelector('button[type="submit"]');
-  const banner = document.getElementById(bannerId);
-  const builderError = document.getElementById('builder-error-msg');
-
-  try {
-    const fd = buildGardenCityFormData(form, inquiryType);
-
-    // Forminit allows 25 MB per request; leave room for request overhead.
-    let totalFileSize = 0;
-
-    for (const value of fd.values()) {
-      if (value instanceof File) totalFileSize += value.size;
-    }
-
-    if (totalFileSize > 24 * 1024 * 1024) {
-      throw new Error('FILE_TOO_LARGE');
-    }
-
-    forminitSending.add(form);
-    if (button) button.disabled = true;
-
-    if (banner) {
-      banner.textContent = 'Sending your request...';
-      banner.classList.remove('hidden');
-    }
-
-    if (builderError) builderError.classList.add('hidden');
-
-    const { data, error } = await forminit.submit(
-      GARDEN_CITY_FORM_ID,
-      fd
-    );
-
-    if (error || typeof data?.hashId !== 'string') {
-      console.error('Forminit submission error:', error);
-      throw new Error('SUBMISSION_FAILED');
-    }
-
-    if (banner) {
-      banner.textContent =
-        'Thank you! Your request has been submitted successfully. Garden City Custom Cakes will review your details and be in touch.';
-      banner.classList.remove('hidden');
-    }
-
-    // Preserve the original form and its values after a successful send.
-    return true;
-
-  } catch (error) {
-    console.error('Garden City form error:', error);
-
-    let message = 'Something went wrong while submitting your request. Please try again. Your information has been kept.';
-
-    if (error.message === 'PHONE_INVALID') {
-      message = 'Please enter a valid Canadian phone number with 10 digits.';
-    } else if (error.message === 'FILE_TOO_LARGE') {
-      message = 'Your reference image is too large. Please use a smaller image and try again.';
-    }
-
-    if (form.id === 'cake-builder-form' && builderError) {
-      builderError.textContent = message;
-      builderError.classList.remove('hidden');
-    } else if (banner) {
-      banner.textContent = message;
-      banner.classList.remove('hidden');
-    }
-
-    return false;
-
-  } finally {
-    forminitSending.delete(form);
-    if (button) button.disabled = false;
-  }
-}
-
-async function handleBuilderSubmit(e) {
-  e.preventDefault();
-
-  const errBox = document.getElementById('builder-error-msg');
-  const name = document.getElementById('builder-name').value.trim();
-  const email = document.getElementById('builder-email').value.trim();
-  const phone = document.getElementById('builder-phone').value.trim();
-  const dateVal = document.getElementById('builder-date').value;
-
-  if (!name || !email || !phone || !dateVal) {
-    errBox.textContent =
-      'Please complete your Name, Email, Phone, and Date in Step 7 before requesting a quote.';
-    errBox.classList.remove('hidden');
-    goToBuilderStep(7);
-    return;
-  }
-
-  if (!validateOrderDate('builder')) {
-    errBox.textContent =
-      'Please review the date notice (4-day minimum notice, up to 3 months ahead, or select Rush Order for under 3 days).';
-    errBox.classList.remove('hidden');
-    goToBuilderStep(7);
-    return;
-  }
-
-  errBox.classList.add('hidden');
-
-  await submitGardenCityForm(
-    e.target,
-    'Custom Cake Builder Quote Request',
-    'builder-submitted-banner'
-  );
-}
-
-async function handleSimpleFormSubmit(e, title, bannerId) {
-  e.preventDefault();
-
-  await submitGardenCityForm(
-    e.target,
-    title,
-    bannerId
-  );
-}
-
-async function handleFreeQuoteSubmit(e) {
-  e.preventDefault();
-
-  await submitGardenCityForm(
-    e.target,
-    'Free Custom Quote and Digital Mockup Request',
-    'fq-submitted'
-  );
-}
 
     function renderGallery(category = 'ALL') {
       const grid = document.getElementById('gallery-grid');
@@ -2632,7 +2556,6 @@ async function handleFreeQuoteSubmit(e) {
       const hash = window.location.hash.replace('#', '');
       if (hash) navigateTo(hash);
     });
-    <script src="https://forminit.com/sdk/v1/forminit.js"></script>
   </script>
 </body>
 </html>
